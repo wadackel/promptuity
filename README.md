@@ -77,12 +77,12 @@ If you want to see more examples, please refer to the [examples](./examples/) di
 
 ## Documentation
 
-Please refer to the [documentation](#).
+Please refer to the [documentation](https://docs.rs/promptuity).
 
 ## Prompts
 
 [promptuity::prompts](#) offers five built-in prompts.  
-To implement your original prompt, please see the [Build your own Prompt](#) section.
+To implement your original prompt, please see the [Build your own Prompt](#build-your-own-prompt) section.
 
 ### Input
 
@@ -161,7 +161,7 @@ let color = p.prompt(
 ## Themes
 
 Promptuity offers two different built-in themes.  
-To implement your original Theme, please see the [Build your own Theme](#) section.
+To implement your original Theme, please see the [Build your own Theme](#build-your-own-theme) section.
 
 ### MinimalTheme
 
