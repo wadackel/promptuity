@@ -1,0 +1,108 @@
+---
+source: src/prompts/multi_select.rs
+---
+state: Active
+message: test message
+hint: none
+placeholder: none
+input(none):
+body(raw):
+[38;5;8m◯[39m [4mValue1[0m
+[38;5;8m◯[39m [38;5;8mValue2[39m
+[38;5;8m◯[39m [38;5;8mValue3[39m
+[38;5;8m◯[39m [38;5;8mValue4[39m
+[38;5;8m◯[39m [38;5;8mValue5[39m
+---
+state: Error(This field is required.)
+input(none):
+body(raw):
+[38;5;8m◯[39m [4mValue1[0m
+[38;5;8m◯[39m [38;5;8mValue2[39m
+[38;5;8m◯[39m [38;5;8mValue3[39m
+[38;5;8m◯[39m [38;5;8mValue4[39m
+[38;5;8m◯[39m [38;5;8mValue5[39m
+---
+state: Active
+input(none):
+body(raw):
+[38;5;10m◉[39m [4mValue1[0m
+[38;5;8m◯[39m [38;5;8mValue2[39m
+[38;5;8m◯[39m [38;5;8mValue3[39m
+[38;5;8m◯[39m [38;5;8mValue4[39m
+[38;5;8m◯[39m [38;5;8mValue5[39m
+---
+state: Active
+input(none):
+body(raw):
+[38;5;10m◉[39m [38;5;8mValue1[39m
+[38;5;8m◯[39m [4mValue2[0m
+[38;5;8m◯[39m [38;5;8mValue3[39m
+[38;5;8m◯[39m [38;5;8mValue4[39m
+[38;5;8m◯[39m [38;5;8mValue5[39m
+---
+state: Active
+input(none):
+body(raw):
+[38;5;10m◉[39m [38;5;8mValue1[39m
+[38;5;10m◉[39m [4mValue2[0m
+[38;5;8m◯[39m [38;5;8mValue3[39m
+[38;5;8m◯[39m [38;5;8mValue4[39m
+[38;5;8m◯[39m [38;5;8mValue5[39m
+---
+state: Active
+input(none):
+body(raw):
+[38;5;10m◉[39m [38;5;8mValue1[39m
+[38;5;10m◉[39m [38;5;8mValue2[39m
+[38;5;8m◯[39m [4mValue3[0m
+[38;5;8m◯[39m [38;5;8mValue4[39m
+[38;5;8m◯[39m [38;5;8mValue5[39m
+---
+state: Active
+input(none):
+body(raw):
+[38;5;10m◉[39m [38;5;8mValue1[39m
+[38;5;10m◉[39m [38;5;8mValue2[39m
+[38;5;10m◉[39m [4mValue3[0m
+[38;5;8m◯[39m [38;5;8mValue4[39m
+[38;5;8m◯[39m [38;5;8mValue5[39m
+---
+state: Active
+input(none):
+body(raw):
+[38;5;10m◉[39m [38;5;8mValue1[39m
+[38;5;10m◉[39m [38;5;8mValue2[39m
+[38;5;10m◉[39m [38;5;8mValue3[39m
+[38;5;8m◯[39m [4mValue4[0m
+[38;5;8m◯[39m [38;5;8mValue5[39m
+---
+state: Active
+input(none):
+body(raw):
+[38;5;10m◉[39m [38;5;8mValue1[39m
+[38;5;10m◉[39m [38;5;8mValue2[39m
+[38;5;10m◉[39m [38;5;8mValue3[39m
+[38;5;10m◉[39m [4mValue4[0m
+[38;5;8m◯[39m [38;5;8mValue5[39m
+---
+state: Error(Please select no more than 3 options.)
+input(none):
+body(raw):
+[38;5;10m◉[39m [38;5;8mValue1[39m
+[38;5;10m◉[39m [38;5;8mValue2[39m
+[38;5;10m◉[39m [38;5;8mValue3[39m
+[38;5;10m◉[39m [4mValue4[0m
+[38;5;8m◯[39m [38;5;8mValue5[39m
+---
+state: Active
+input(none):
+body(raw):
+[38;5;10m◉[39m [38;5;8mValue1[39m
+[38;5;10m◉[39m [38;5;8mValue2[39m
+[38;5;10m◉[39m [38;5;8mValue3[39m
+[38;5;8m◯[39m [4mValue4[0m
+[38;5;8m◯[39m [38;5;8mValue5[39m
+---
+state: Submit
+input(raw): Value1, Value2, Value3
+body(none):

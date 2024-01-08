@@ -1,0 +1,24 @@
+[package]
+name = "promptuity"
+version = "0.0.1"
+description = "Promptuity is a library that provides interactive prompts."
+edition = "2021"
+license = "MIT"
+readme = "README.md"
+authors = ["wadackel <wadackel@gmail.com>"]
+keywords = ["cli", "ask", "prompt", "interactive", "console", "cui"]
+categories = ["command-line-interface", "command-line-utilities"]
+repository = "https://github.com/wadackel/promptuity"
+homepage = "https://github.com/wadackel/promptuity"
+documentation = "https://docs.rs/promptuity"
+
+[dependencies]
+crossterm = "0.27.0"
+thiserror = "1.0.50"
+unicode-width = "0.1.11"
+
+[dev-dependencies]
+fuzzy-matcher = "0.3.7"
+indicatif = "0.17.7"
+insta = "1.34.0"
+pretty_assertions = "1.4.0"

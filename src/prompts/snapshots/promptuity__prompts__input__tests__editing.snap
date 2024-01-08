@@ -1,0 +1,97 @@
+---
+source: src/prompts/input.rs
+---
+state: Active
+message: test message
+hint: none
+placeholder: none
+input(cursor): abcdef| 
+body(none):
+---
+state: Active
+input(cursor): abcde| 
+body(none):
+---
+state: Active
+input(cursor): abcd| 
+body(none):
+---
+state: Active
+input(cursor): abcdh| 
+body(none):
+---
+state: Active
+input(cursor): |abcdh
+body(none):
+---
+state: Active
+input(cursor): |bcdh
+body(none):
+---
+state: Active
+input(cursor): b|cdh
+body(none):
+---
+state: Active
+input(cursor): b|dh
+body(none):
+---
+state: Active
+input(cursor): b| 
+body(none):
+---
+state: Active
+input(cursor): ba| 
+body(none):
+---
+state: Active
+input(cursor): bar| 
+body(none):
+---
+state: Active
+input(cursor): bar | 
+body(none):
+---
+state: Active
+input(cursor): bar b| 
+body(none):
+---
+state: Active
+input(cursor): bar ba| 
+body(none):
+---
+state: Active
+input(cursor): bar baz| 
+body(none):
+---
+state: Active
+input(cursor): bar | 
+body(none):
+---
+state: Active
+input(cursor): | 
+body(none):
+---
+state: Active
+input(cursor): a| 
+body(none):
+---
+state: Active
+input(cursor): ab| 
+body(none):
+---
+state: Active
+input(cursor): abc| 
+body(none):
+---
+state: Active
+input(cursor): ab|c
+body(none):
+---
+state: Active
+input(cursor): a|bc
+body(none):
+---
+state: Active
+input(cursor): | 
+body(none):

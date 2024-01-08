@@ -1,0 +1,29 @@
+---
+source: src/prompts/number.rs
+---
+state: Active
+message: test message
+hint: none
+placeholder: none
+input(cursor): | 
+body(none):
+---
+state: Active
+input(cursor): 1| 
+body(none):
+---
+state: Error(Must be a number between 2 and 9223372036854775807.)
+input(cursor): 1| 
+body(none):
+---
+state: Active
+input(cursor): | 
+body(none):
+---
+state: Active
+input(cursor): 2| 
+body(none):
+---
+state: Submit
+input(raw): 2
+body(none):

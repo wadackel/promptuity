@@ -1,0 +1,13 @@
+---
+source: src/prompts/confirm.rs
+---
+state: Active
+message: test message
+hint: none
+placeholder: none
+input(raw): [38;5;10m●[39m Yes  /  [38;5;8m○[39m No
+body(none):
+---
+state: Submit
+input(raw): Yes
+body(none):

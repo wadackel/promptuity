@@ -1,0 +1,41 @@
+---
+source: src/prompts/number.rs
+---
+state: Active
+message: test message
+hint: none
+placeholder: none
+input(cursor): | 
+body(none):
+---
+state: Active
+input(cursor): 1| 
+body(none):
+---
+state: Active
+input(cursor): 10| 
+body(none):
+---
+state: Active
+input(cursor): 4| 
+body(none):
+---
+state: Active
+input(cursor): 3| 
+body(none):
+---
+state: Active
+input(cursor): | 
+body(none):
+---
+state: Active
+input(cursor): 1| 
+body(none):
+---
+state: Active
+input(cursor): 2| 
+body(none):
+---
+state: Active
+input(cursor): 3| 
+body(none):

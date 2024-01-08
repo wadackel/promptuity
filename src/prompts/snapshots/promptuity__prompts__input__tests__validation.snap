@@ -1,0 +1,37 @@
+---
+source: src/prompts/input.rs
+---
+state: Active
+message: test message
+hint: none
+placeholder: none
+input(cursor): | 
+body(none):
+---
+state: Active
+input(cursor): a| 
+body(none):
+---
+state: Active
+input(cursor): ab| 
+body(none):
+---
+state: Active
+input(cursor): abc| 
+body(none):
+---
+state: Error(Error Message)
+input(cursor): abc| 
+body(none):
+---
+state: Active
+input(cursor): ab| 
+body(none):
+---
+state: Active
+input(cursor): abz| 
+body(none):
+---
+state: Submit
+input(cursor): abz| 
+body(none):

@@ -1,0 +1,73 @@
+---
+source: src/prompts/number.rs
+---
+state: Active
+message: test message
+hint: none
+placeholder: none
+input(cursor): | 
+body(none):
+---
+state: Active
+input(cursor): 1| 
+body(none):
+---
+state: Active
+input(cursor): 12| 
+body(none):
+---
+state: Active
+input(cursor): 123| 
+body(none):
+---
+state: Active
+input(cursor): 1234| 
+body(none):
+---
+state: Active
+input(cursor): 12345| 
+body(none):
+---
+state: Active
+input(cursor): 1234|5
+body(none):
+---
+state: Active
+input(cursor): 123|5
+body(none):
+---
+state: Active
+input(cursor): 12|5
+body(none):
+---
+state: Active
+input(cursor): 12| 
+body(none):
+---
+state: Active
+input(cursor): 1|2
+body(none):
+---
+state: Active
+input(cursor): | 
+body(none):
+---
+state: Active
+input(cursor): -| 
+body(none):
+---
+state: Active
+input(cursor): -1| 
+body(none):
+---
+state: Active
+input(cursor): -12| 
+body(none):
+---
+state: Active
+input(cursor): -123| 
+body(none):
+---
+state: Active
+input(cursor): | 
+body(none):

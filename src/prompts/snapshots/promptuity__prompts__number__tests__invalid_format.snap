@@ -1,0 +1,17 @@
+---
+source: src/prompts/number.rs
+---
+state: Active
+message: test message
+hint: none
+placeholder: none
+input(cursor): | 
+body(none):
+---
+state: Active
+input(cursor): -| 
+body(none):
+---
+state: Error(Invalid number.)
+input(cursor): -| 
+body(none):

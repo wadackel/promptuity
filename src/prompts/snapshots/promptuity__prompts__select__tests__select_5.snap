@@ -1,0 +1,69 @@
+---
+source: src/prompts/select.rs
+---
+state: Active
+message: test message
+hint: none
+placeholder: none
+input(none):
+body(raw):
+[38;5;10m◉[39m [4mValue1[0m
+[38;5;8m◯[39m [38;5;8mValue2[39m
+[38;5;8m◯[39m [38;5;8mValue3[39m
+[38;5;8m◯[39m [38;5;8mValue4[39m
+[38;5;8m◯[39m [38;5;8mValue5[39m
+[38;5;8m◯[39m [38;5;8mValue6[39m
+[38;5;8m◯[39m [38;5;8mValue7[39m
+[38;5;8m◯[39m [38;5;8mValue8[39m
+---
+state: Active
+input(none):
+body(raw):
+[38;5;8m◯[39m [38;5;8mValue1[39m
+[38;5;10m◉[39m [4mValue2[0m
+[38;5;8m◯[39m [38;5;8mValue3[39m
+[38;5;8m◯[39m [38;5;8mValue4[39m
+[38;5;8m◯[39m [38;5;8mValue5[39m
+[38;5;8m◯[39m [38;5;8mValue6[39m
+[38;5;8m◯[39m [38;5;8mValue7[39m
+[38;5;8m◯[39m [38;5;8mValue8[39m
+---
+state: Active
+input(none):
+body(raw):
+[38;5;8m◯[39m [38;5;8mValue1[39m
+[38;5;8m◯[39m [38;5;8mValue2[39m
+[38;5;10m◉[39m [4mValue3[0m
+[38;5;8m◯[39m [38;5;8mValue4[39m
+[38;5;8m◯[39m [38;5;8mValue5[39m
+[38;5;8m◯[39m [38;5;8mValue6[39m
+[38;5;8m◯[39m [38;5;8mValue7[39m
+[38;5;8m◯[39m [38;5;8mValue8[39m
+---
+state: Active
+input(none):
+body(raw):
+[38;5;8m◯[39m [38;5;8mValue1[39m
+[38;5;8m◯[39m [38;5;8mValue2[39m
+[38;5;8m◯[39m [38;5;8mValue3[39m
+[38;5;10m◉[39m [4mValue4[0m
+[38;5;8m◯[39m [38;5;8mValue5[39m
+[38;5;8m◯[39m [38;5;8mValue6[39m
+[38;5;8m◯[39m [38;5;8mValue7[39m
+[38;5;8m◯[39m [38;5;8mValue8[39m
+---
+state: Active
+input(none):
+body(raw):
+[38;5;8m◯[39m [38;5;8mValue1[39m
+[38;5;8m◯[39m [38;5;8mValue2[39m
+[38;5;8m◯[39m [38;5;8mValue3[39m
+[38;5;8m◯[39m [38;5;8mValue4[39m
+[38;5;10m◉[39m [4mValue5[0m
+[38;5;8m◯[39m [38;5;8mValue6[39m
+[38;5;8m◯[39m [38;5;8mValue7[39m
+[38;5;8m◯[39m [38;5;8mValue8[39m
+---
+state: Submit
+input(raw): Value5
+body(none):

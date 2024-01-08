@@ -1,0 +1,37 @@
+---
+source: src/prompts/input.rs
+---
+state: Active
+message: test message
+hint: none
+placeholder: none
+input(cursor): abcdef| 
+body(none):
+---
+state: Active
+input(cursor): abcde|f
+body(none):
+---
+state: Active
+input(cursor): abcd|ef
+body(none):
+---
+state: Active
+input(cursor): |abcdef
+body(none):
+---
+state: Active
+input(cursor): a|bcdef
+body(none):
+---
+state: Active
+input(cursor): ab|cdef
+body(none):
+---
+state: Active
+input(cursor): abcdef| 
+body(none):
+---
+state: Active
+input(cursor): |abcdef
+body(none):

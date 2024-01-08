@@ -1,0 +1,9 @@
+---
+source: src/prompts/input.rs
+---
+state: Active
+message: test message
+hint: none
+placeholder: placeholder message
+input(cursor): | 
+body(none):

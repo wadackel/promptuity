@@ -1,0 +1,9 @@
+---
+source: src/prompts/number.rs
+---
+state: Active
+message: test message
+hint: hint message
+placeholder: none
+input(cursor): | 
+body(none):
