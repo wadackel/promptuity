@@ -1,0 +1,26 @@
+---
+source: tests/themes.rs
+---
+[38;5;14m?[39m [1mDummyPrompt[0m
+[38;5;10m✔[39m [1mDummyPrompt[0m
+[38;5;14m?[39m [1mDummyPrompt[0m  Raw
+[38;5;10m✔[39m [1mDummyPrompt[0m  [38;5;14mRaw[39m
+[38;5;14m?[39m [1mDummyPrompt[0m  Cursor[7m [0m
+[38;5;10m✔[39m [1mDummyPrompt[0m  [38;5;14mCursor[39m
+[38;5;14m?[39m [1mDummyPrompt[0m  Raw
+Raw1
+Raw2
+Raw3
+[38;5;10m✔[39m [1mDummyPrompt[0m  [38;5;14mRaw[39m
+[38;5;8mRaw1
+Raw2
+Raw3[39m
+[38;5;14m?[39m [1mDummyPrompt[0m  Cursor[7m [0m
+Raw1
+Raw2
+Raw3
+[38;5;10m✔[39m [1mDummyPrompt[0m  [38;5;14mCursor[39m
+[38;5;8mRaw1
+Raw2
+Raw3[39m
+
