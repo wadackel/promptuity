@@ -1,0 +1,59 @@
+---
+source: tests/prompts.rs
+---
+[38;5;14m?[39m [1mInput Message[0m  [7m [0m[38;5;8m[39m
+[38;5;14m?[39m [1mInput Message[0m  a[7m [0m
+[38;5;14m?[39m [1mInput Message[0m  ab[7m [0m
+[38;5;14m?[39m [1mInput Message[0m  abc[7m [0m
+[38;5;10m✔[39m [1mInput Message[0m  [38;5;14mabc[39m
+[38;5;14m?[39m [1mPassword Message[0m  [7m [0m[38;5;8m[39m
+[38;5;14m?[39m [1mPassword Message[0m  f[7m [0m
+[38;5;14m?[39m [1mPassword Message[0m  fo[7m [0m
+[38;5;14m?[39m [1mPassword Message[0m  foo[7m [0m
+[38;5;10m✔[39m [1mPassword Message[0m  [38;5;14mfoo[39m
+[38;5;14m?[39m [1mNumber Message[0m  [7m [0m[38;5;8m[39m
+[38;5;14m?[39m [1mNumber Message[0m  1[7m [0m
+[38;5;14m?[39m [1mNumber Message[0m  10[7m [0m
+[38;5;14m?[39m [1mNumber Message[0m  100[7m [0m
+[38;5;14m?[39m [1mNumber Message[0m  [7m1[0m00
+[38;5;14m?[39m [1mNumber Message[0m  -[7m1[0m00
+[38;5;10m✔[39m [1mNumber Message[0m  [38;5;14m-100[39m
+[38;5;14m?[39m [1mSelect Message[0m
+[38;5;10m◉[39m [4mOption1[0m
+[38;5;8m◯[39m [38;5;8mOption2[39m
+[38;5;8m◯[39m [38;5;8mOption3[39m
+[38;5;14m?[39m [1mSelect Message[0m
+[38;5;8m◯[39m [38;5;8mOption1[39m
+[38;5;10m◉[39m [4mOption2[0m
+[38;5;8m◯[39m [38;5;8mOption3[39m
+[38;5;14m?[39m [1mSelect Message[0m
+[38;5;8m◯[39m [38;5;8mOption1[39m
+[38;5;8m◯[39m [38;5;8mOption2[39m
+[38;5;10m◉[39m [4mOption3[0m
+[38;5;10m✔[39m [1mSelect Message[0m  [38;5;14mOption3[39m
+[38;5;14m?[39m [1mMultiSelect Message[0m
+[38;5;8m◯[39m [4mOption1[0m
+[38;5;8m◯[39m [38;5;8mOption2[39m
+[38;5;8m◯[39m [38;5;8mOption3[39m
+[38;5;14m?[39m [1mMultiSelect Message[0m
+[38;5;10m◉[39m [4mOption1[0m
+[38;5;8m◯[39m [38;5;8mOption2[39m
+[38;5;8m◯[39m [38;5;8mOption3[39m
+[38;5;14m?[39m [1mMultiSelect Message[0m
+[38;5;10m◉[39m [38;5;8mOption1[39m
+[38;5;8m◯[39m [4mOption2[0m
+[38;5;8m◯[39m [38;5;8mOption3[39m
+[38;5;14m?[39m [1mMultiSelect Message[0m
+[38;5;10m◉[39m [38;5;8mOption1[39m
+[38;5;8m◯[39m [38;5;8mOption2[39m
+[38;5;8m◯[39m [4mOption3[0m
+[38;5;14m?[39m [1mMultiSelect Message[0m
+[38;5;10m◉[39m [38;5;8mOption1[39m
+[38;5;8m◯[39m [38;5;8mOption2[39m
+[38;5;10m◉[39m [4mOption3[0m
+[38;5;10m✔[39m [1mMultiSelect Message[0m  [38;5;14mOption1, Option3[39m
+[38;5;14m?[39m [1mConfirm Message[0m  [38;5;8m○[39m Yes  /  [38;5;10m●[39m No
+[38;5;14m?[39m [1mConfirm Message[0m  [38;5;8m○[39m Yes  /  [38;5;10m●[39m No
+[38;5;14m?[39m [1mConfirm Message[0m  [38;5;10m●[39m Yes  /  [38;5;8m○[39m No
+[38;5;10m✔[39m [1mConfirm Message[0m  [38;5;14mNo[39m
+
