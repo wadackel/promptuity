@@ -1,6 +1,6 @@
 [package]
 name = "promptuity"
-version = "0.0.1"
+version = "0.0.2"
 description = "Promptuity is a library that provides interactive prompts."
 edition = "2021"
 license = "MIT"
