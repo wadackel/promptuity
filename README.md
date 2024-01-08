@@ -4,7 +4,7 @@
     <a href="https://github.com/wadackel/promptuity/actions/workflows/ci.yml?query=branch%3Amain"><img alt="GitHub Actions Workflow Status" src="https://img.shields.io/github/actions/workflow/status/wadackel/promptuity/ci.yml?branch=main&style=flat-square&logo=GitHub%20Actions&logoColor=white"></a>
     <a href="https://crates.io/crates/promptuity/"><img alt="Crates.io Version" src="https://img.shields.io/crates/v/promptuity?style=flat-square&logo=Rust&logoColor=white"></a>
     <a href="https://docs.rs/promptuity"><img alt="docs.rs" src="https://img.shields.io/docsrs/promptuity?style=flat-square&logo=Rust&logoColor=white"></a>
-    <a href="https://github.com/wadackel/promptuity/blob/main/LICENSE"><img alt="MIT License" src="https://img.shields.io/crates/l/promptuity?style=flat-square"></a>
+    <a href="https://github.com/wadackel/promptuity/blob/main/LICENSE"><img src="https://img.shields.io/github/license/wadackel/promptuity?label=license&style=flat-square" alt="MIT LICENSE" /></a>
 </p>
 <p align="center">Promptuity is a library that provides interactive prompts. It is highly extensible, allowing you to build your original prompts from scratch. It brings <strong>ingenuity</strong> to various projects.</p>
 
@@ -81,7 +81,7 @@ Please refer to the [documentation](https://docs.rs/promptuity).
 
 ## Prompts
 
-[promptuity::prompts](#) offers five built-in prompts.  
+[`promptuity::prompts`](https://docs.rs/promptuity/latest/promptuity/prompts/index.html) offers five built-in prompts.  
 To implement your original prompt, please see the [Build your own Prompt](#build-your-own-prompt) section.
 
 ### Input
@@ -181,7 +181,7 @@ This section provides guidance on how to construct original prompts and Themes.
 
 ### Build your own Prompt
 
-Creating an original prompt can be achieved by implementing the [`Prompt`](#) trait. By implementing three lifecycle methods, you can build prompts that are usable with [`Promptuity::prompt`](#).
+Creating an original prompt can be achieved by implementing the [`Prompt`](https://docs.rs/promptuity/latest/promptuity/trait.Prompt.html) trait. By implementing three lifecycle methods, you can build prompts that are usable with [`Promptuity::prompt`](https://docs.rs/promptuity/latest/promptuity/struct.Promptuity.html#method.prompt).
 
 Promptuity prompts consist of the following elements:
 
@@ -223,7 +223,7 @@ First, let's implement the reception of key inputs.
 
 #### 1. Receiving Key Input
 
-Handle key inputs in the [`Prompt::handle`](#) method.
+Handle key inputs in the [`Prompt::handle`](https://docs.rs/promptuity/latest/promptuity/trait.Prompt.html#tymethod.handle) method.
 
 For example, let's implement it so that pressing <kbd>y</kbd> for Yes and <kbd>n</kbd> for No finalizes the result.
 
@@ -262,7 +262,7 @@ You can freely combine key codes and modifiers, allowing the construction of com
 
 #### 2. Rendering the Prompt
 
-Construct the rendering content in the [`Prompt::render`](#) method. Here's a simple example using only **Input** without a **Body**.
+Construct the rendering content in the [`Prompt::render`](https://docs.rs/promptuity/latest/promptuity/trait.Prompt.html#tymethod.render) method. Here's a simple example using only **Input** without a **Body**.
 
 ```rust
 use promptuity::event::{KeyCode, KeyModifiers};
@@ -290,7 +290,7 @@ impl<W: std::io::Write> Prompt<W> for CustomConfirm {
 }
 ```
 
-Determine the appropriate rendering content based on the `PromptState` returned by `Prompt::handle`. The above implementation achieves the following requirements:
+Determine the appropriate rendering content based on the [`PromptState`](https://docs.rs/promptuity/latest/promptuity/enum.PromptState.html) returned by [`Prompt::handle`](https://docs.rs/promptuity/latest/promptuity/trait.Prompt.html#tymethod.handle). The above implementation achieves the following requirements:
 
 - The result displays either `Yes` or `No`.
 - If the prompt is interrupted, only the message is displayed.
@@ -300,7 +300,7 @@ Determine the appropriate rendering content based on the `PromptState` returned 
 
 This is the final step in constructing a custom prompt.
 
-Implement the `Prompt::submit` method, which returns the final value for the received key input.
+Implement the [`Prompt::submit`](https://docs.rs/promptuity/latest/promptuity/trait.Prompt.html#tymethod.submit) method, which returns the final value for the received key input.
 
 ```rust
 impl<W: std::io::Write> Prompt<W> for CustomConfirm {
@@ -328,7 +328,7 @@ For a complete example, please refer to [examples/custom_theme.rs](./examples/cu
 
 ## Error Handling
 
-All errors are consolidated into [`promptuity::Error`](#).
+All errors are consolidated into [`promptuity::Error`](https://docs.rs/promptuity/latest/promptuity/enum.Error.html).
 
 In many cases, prompt interruptions will need to be handled individually. Interruptions occur during user input reception, typically through inputs like <kbd>Ctrl</kbd> + <kbd>C</kbd> or <kbd>ESC</kbd>.
 
