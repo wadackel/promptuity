@@ -8,6 +8,33 @@
 </p>
 <p align="center">Promptuity is a library that provides interactive prompts. It is highly extensible, allowing you to build your original prompts from scratch. It brings <strong>ingenuity</strong> to various projects.</p>
 
+## Table Of Contents
+
+- [Concept](#concept)
+- [Quick Start](#quick-start)
+- [Examples](#examples)
+- [Documentation](#documentation)
+- [Prompts](#prompts)
+    - [Input](#input)
+    - [Password](#password)
+    - [Number](#number)
+    - [Select](#select)
+    - [MultiSelect](#multiselect)
+    - [Autocomplete](#autocomplete)
+- [Themes](#themes)
+    - [MinimalTheme](#minimaltheme)
+    - [FancyTheme](#fancytheme)
+- [Customize](#customize)
+    - [Build your own Prompt](#build-your-own-prompt)
+    - [Build your own Theme](#build-your-own-theme)
+- [Error Handling](#error-handling)
+- [Testing](#testing)
+- [Alternatives](#alternatives)
+    - [Inspired](#inspired)
+- [Contributing](#contributing)
+- [CHANGELOG](#changelog)
+- [License](#license)
+
 ## Concept
 
 - :zap: **Not easy, But simple**
@@ -359,6 +386,42 @@ fn main() {
 ```
 
 Prompt interruptions can be handled as `Error::Cancel`. In the above examples, no message is displayed in the event of an interruption.
+
+## Testing
+
+Generally, validations involving user input are costly. Since Promptuity implements terminal behaviors as the [`Terminal`](https://docs.rs/promptuity/latest/promptuity/trait.Terminal.html) trait, it's easy to replace with a Fake.
+
+The `Terminal` that simulates key inputs, used in Promptuity's integration tests, can be referenced in [`Term`](./tests/fake_term.rs).
+
+Below is an example of testing prompts using a Fake `Terminal`.
+
+```rust
+#[test]
+fn test_prompts() {
+    let mut term = fake_term::Term::new(&[
+        (KeyCode::Char('a'), KeyModifiers::NONE),
+        (KeyCode::Char('b'), KeyModifiers::NONE),
+        (KeyCode::Char('c'), KeyModifiers::NONE),
+        (KeyCode::Enter, KeyModifiers::NONE),
+    ]);
+
+    let mut theme = MinimalTheme::default();
+
+    let result = {
+        let mut p = Promptuity::new(&mut term, &mut theme);
+        p.prompt(Input::new("Input Message").as_mut()).unwrap()
+    };
+
+    let output = term.output();
+
+    assert_eq!(result, String::from("abc"));
+
+    // This is an example of performing snapshots on outputs.
+    insta::with_settings!({ omit_expression => true }, {
+        insta::assert_snapshot!(output);
+    });
+}
+```
 
 ## Alternatives
 
