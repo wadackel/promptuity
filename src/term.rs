@@ -243,10 +243,15 @@ impl<T: std::io::Write> Terminal<T> for Term<T> {
     fn read_key(&mut self) -> Result<(KeyCode, KeyModifiers), Error> {
         loop {
             if let Event::Key(KeyEvent {
-                code, modifiers, ..
+                code,
+                modifiers,
+                kind,
+                ..
             }) = event::read()?
             {
-                return Ok((code, modifiers));
+                if kind == event::KeyEventKind::Press {
+                    return Ok((code, modifiers));
+                }
             }
         }
     }
