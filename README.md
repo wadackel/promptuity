@@ -20,6 +20,7 @@
     - [Number](#number)
     - [Select](#select)
     - [MultiSelect](#multiselect)
+    - [Confirm](#confirm)
     - [Autocomplete](#autocomplete)
 - [Themes](#themes)
     - [MinimalTheme](#minimaltheme)
@@ -113,27 +114,48 @@ To implement your original prompt, please see the [Build your own Prompt](#build
 
 ### Input
 
-![Input Screenshot](./assets/prompt_input.png)
+![Input Demo](./assets/prompt_input.gif)
 
 A prompt for general text input.
 
 ```rust
-let name = p.prompt(Input::new("What is your accout name?").with_hint("e.g. wadackel"))?;
+let name = p.prompt(
+    Input::new("What is your accout name?")
+        .with_placeholder("username")
+        .with_hint("Only alphanumeric characters are allowed.")
+        .with_validator(|value: &String| {
+            if value.chars().all(|c| c.is_alphanumeric()) {
+                Ok(())
+            } else {
+                Err("Invalid format".into())
+            }
+        }),
+)?;
 ```
 
 ### Password
 
-![Password Screenshot](./assets/prompt_password.png)
+![Password Demo](./assets/prompt_password.gif)
 
 A text input prompt where the input is not displayed.
 
 ```rust
-let secret = p.prompt(Password::new("What is your password?").with_required(false))?;
+let secret = p.prompt(
+    Password::new("Set a password for your account")
+        .with_hint("Please enter more than 6 alphanumeric characters.")
+        .with_validator(|value: &String| {
+            if value.len() < 6 {
+                Err("Password must be at least 6 characters long".into())
+            } else {
+                Ok(())
+            }
+        }),
+)?;
 ```
 
 ### Number
 
-![Number Screenshot](./assets/prompt_number.png)
+![Number Demo](./assets/prompt_number.gif)
 
 A prompt for inputting only integer values.
 
@@ -143,7 +165,7 @@ let age = p.prompt(Number::new("How old are you?").with_min(0).with_max(120))?;
 
 ### Select
 
-![Select Screenshot](./assets/prompt_select.png)
+![Select Demo](./assets/prompt_select.gif)
 
 A prompt for selecting a single element from a list of options.
 
@@ -155,27 +177,43 @@ let color = p.prompt(
             SelectOption::new("Red", "#ff0000"),
             SelectOption::new("Green", "#00ff00").with_hint("recommended"),
             SelectOption::new("Blue", "#0000ff"),
-        ])
-        .with_page_size(5)
+        ],
+    )
+    .as_mut(),
 )?;
 ```
 
 ### MultiSelect
 
-![MultiSelect Screenshot](./assets/prompt_multi_select.png)
+![MultiSelect Demo](./assets/prompt_multi_select.gif)
 
 A prompt for selecting multiple elements from a list of options.
 
 ```rust
 let color = p.prompt(
     MultiSelect::new(
-        "What is your favorite color?",
+        "What are your favorite colors?",
         vec![
             MultiSelectOption::new("Red", "#ff0000"),
             MultiSelectOption::new("Green", "#00ff00").with_hint("recommended"),
             MultiSelectOption::new("Blue", "#0000ff"),
-        ])
-        .with_page_size(5)
+        ],
+    )
+    .as_mut(),
+)?;
+```
+
+### Confirm
+
+![Confirm Demo](./assets/prompt_confirm.gif)
+
+A prompt for inputting a Yes/No choice.
+
+```rust
+let like = p.prompt(
+    Confirm::new("Do you like dogs?")
+        .with_hint("This is just a sample prompt :)")
+        .with_default(true),
 )?;
 ```
 
@@ -196,11 +234,29 @@ MinimalTheme is similar to [Inquirer](https://github.com/SBoudrias/Inquirer.js).
 
 ![MinimalTheme Screenshot](./assets/theme_minimal.png)
 
+```rust
+use promptuity::themes::MinimalTheme;
+
+fn main() {
+    let mut theme = MinimalTheme::default();
+    // ...
+}
+```
+
 ### FancyTheme
 
 FancyTheme is similar to [clack](https://github.com/natemoo-re/clack). It provides a rich UI.
 
 ![FancyTheme Screenshot](./assets/theme_fancy.png)
+
+```rust
+use promptuity::themes::FancyTheme;
+
+fn main() {
+    let mut theme = FancyTheme::default();
+    // ...
+}
+```
 
 ## Customize
 
