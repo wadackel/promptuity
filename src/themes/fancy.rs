@@ -62,14 +62,12 @@ impl FancyTheme {
     }
 
     fn fmt_placeholder(&self, placeholder: String) -> String {
-        let mut chars = placeholder.char_indices();
-        let cursor = chars.nth(0).unwrap_or((0, ' '));
-        let second = chars.nth(1).unwrap_or((0, ' '));
-        let rest = &placeholder[second.0..];
+        let input = InputCursor::new(placeholder, 0);
+        let (_, cursor, right) = input.split();
         format!(
             "{}{}",
-            Styled::new(cursor.1).rev(),
-            Styled::new(rest).fg(Color::DarkGrey),
+            Styled::new(cursor).rev(),
+            Styled::new(right).fg(Color::DarkGrey),
         )
     }
 
@@ -91,7 +89,7 @@ impl FancyTheme {
                 self.fmt_line(color, input)
             }
             PromptInput::Cursor(c) => {
-                let input = if c.is_empty() {
+                let input = if c.value().is_empty() {
                     self.fmt_placeholder(placeholder.unwrap_or_default())
                 } else {
                     self.fmt_cursor(c)
