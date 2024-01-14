@@ -126,7 +126,7 @@ impl AsMut<Input> for Input {
     }
 }
 
-impl<W: std::io::Write> Prompt<W> for Input {
+impl Prompt for Input {
     type Output = String;
 
     fn handle(&mut self, code: KeyCode, modifiers: KeyModifiers) -> PromptState {
@@ -210,21 +210,18 @@ mod tests {
 
     test_prompt!(
         test_hint,
-        Input,
         Input::new("test message").with_hint("hint message"),
         vec![]
     );
 
     test_prompt!(
         test_placeholder,
-        Input,
         Input::new("test message").with_placeholder("placeholder message"),
         vec![]
     );
 
     test_prompt!(
         test_default,
-        Input,
         Input::new("test message").as_mut(),
         vec![
             (KeyCode::Char('a'), KeyModifiers::NONE),
@@ -239,21 +236,18 @@ mod tests {
 
     test_prompt!(
         test_required_error,
-        Input,
         Input::new("test message").as_mut(),
         vec![(KeyCode::Enter, KeyModifiers::NONE)]
     );
 
     test_prompt!(
         test_non_required_empty_submit,
-        Input,
         Input::new("test message").with_required(false),
         vec![(KeyCode::Enter, KeyModifiers::NONE)]
     );
 
     test_prompt!(
         test_move,
-        Input,
         Input::new("test message").with_default("abcdef"),
         vec![
             (KeyCode::Left, KeyModifiers::NONE),
@@ -268,7 +262,6 @@ mod tests {
 
     test_prompt!(
         test_editing,
-        Input,
         Input::new("test message").with_default("abcdef"),
         vec![
             (KeyCode::Backspace, KeyModifiers::NONE),
@@ -298,7 +291,6 @@ mod tests {
 
     test_prompt!(
         test_validation,
-        Input,
         Input::new("test message").with_validator(|v: &String| {
             if v.as_str() == "abc" {
                 Err("Error Message".into())

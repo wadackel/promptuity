@@ -24,7 +24,7 @@ struct DummyPrompt {
     placeholder: bool,
 }
 
-impl<W: std::io::Write> Prompt<W> for DummyPrompt {
+impl Prompt for DummyPrompt {
     type Output = ();
 
     fn handle(&mut self, code: KeyCode, modifiers: KeyModifiers) -> promptuity::PromptState {

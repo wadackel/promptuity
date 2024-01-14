@@ -269,7 +269,7 @@ impl<T: Default + Clone> AsMut<MultiSelect<T>> for MultiSelect<T> {
     }
 }
 
-impl<T: Default + Clone, W: std::io::Write> Prompt<W> for MultiSelect<T> {
+impl<T: Default + Clone> Prompt for MultiSelect<T> {
     type Output = Vec<T>;
 
     fn setup(&mut self) -> Result<(), Error> {
@@ -415,27 +415,24 @@ mod tests {
 
     test_prompt!(
         test_hint,
-        MultiSelect<String>,
         MultiSelect::new("test message", options!(3)).with_hint("hint message"),
         vec![]
     );
 
     test_prompt!(
         test_10_items_with_5_page_size,
-        MultiSelect<String>,
         MultiSelect::new("test message", options!(10)).with_page_size(5),
         vec![]
     );
 
     test_prompt!(
         test_option_hint,
-        MultiSelect<String>,
         MultiSelect::new(
             "test message",
             vec![
-                MultiSelectOption::new("Value1", "value1".into()).with_hint("hint1"),
-                MultiSelectOption::new("Value2", "value2".into()),
-                MultiSelectOption::new("Value3", "value3".into()).with_hint("hint3"),
+                MultiSelectOption::new("Value1", "value1".to_string()).with_hint("hint1"),
+                MultiSelectOption::new("Value2", "value2".to_string()),
+                MultiSelectOption::new("Value3", "value3".to_string()).with_hint("hint3"),
             ]
         )
         .with_page_size(5),
@@ -444,7 +441,6 @@ mod tests {
 
     test_prompt!(
         test_move,
-        MultiSelect<String>,
         MultiSelect::new("test message", options!(10)).with_page_size(5),
         vec![
             (KeyCode::Char('j'), KeyModifiers::NONE),
@@ -476,7 +472,6 @@ mod tests {
 
     test_prompt!(
         test_select_2_and_5,
-        MultiSelect<String>,
         MultiSelect::new("test message", options!(10)).with_page_size(5),
         vec![
             (KeyCode::Down, KeyModifiers::NONE),
@@ -491,7 +486,6 @@ mod tests {
 
     test_prompt!(
         test_select_all_and_inverse,
-        MultiSelect<String>,
         MultiSelect::new("test message", options!(5)).as_mut(),
         vec![
             (KeyCode::Char('a'), KeyModifiers::NONE),
@@ -507,21 +501,18 @@ mod tests {
 
     test_prompt!(
         test_required_error,
-        MultiSelect<String>,
         MultiSelect::new("test message", options!(5)).with_required(true),
         vec![(KeyCode::Enter, KeyModifiers::NONE)]
     );
 
     test_prompt!(
         test_non_required_empty_submit,
-        MultiSelect<String>,
         MultiSelect::new("test message", options!(5)).with_required(false),
         vec![(KeyCode::Enter, KeyModifiers::NONE)]
     );
 
     test_prompt!(
         test_min_error,
-        MultiSelect<String>,
         MultiSelect::new("test message", options!(5)).with_min(2),
         vec![
             (KeyCode::Enter, KeyModifiers::NONE),
@@ -535,7 +526,6 @@ mod tests {
 
     test_prompt!(
         test_max_error,
-        MultiSelect<String>,
         MultiSelect::new("test message", options!(5)).with_max(3),
         vec![
             (KeyCode::Enter, KeyModifiers::NONE),

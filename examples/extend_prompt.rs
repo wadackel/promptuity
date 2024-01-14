@@ -21,7 +21,7 @@ impl AsMut<ExtendedConfirm> for ExtendedConfirm {
     }
 }
 
-impl<W: std::io::Write> Prompt<W> for ExtendedConfirm {
+impl Prompt for ExtendedConfirm {
     type Output = bool;
 
     fn handle(
@@ -32,28 +32,28 @@ impl<W: std::io::Write> Prompt<W> for ExtendedConfirm {
         match (code, modifiers) {
             (KeyCode::Left, KeyModifiers::NONE) => {
                 // forward to `y` key
-                Prompt::<W>::handle(&mut self.original, KeyCode::Char('y'), KeyModifiers::NONE)
+                Prompt::handle(&mut self.original, KeyCode::Char('y'), KeyModifiers::NONE)
             }
             (KeyCode::Right, KeyModifiers::NONE) => {
                 // forward to `n` key
-                Prompt::<W>::handle(&mut self.original, KeyCode::Char('n'), KeyModifiers::NONE)
+                Prompt::handle(&mut self.original, KeyCode::Char('n'), KeyModifiers::NONE)
             }
             _ => {
                 // forward to original handler
-                Prompt::<W>::handle(&mut self.original, code, modifiers)
+                Prompt::handle(&mut self.original, code, modifiers)
             }
         }
     }
 
     fn submit(&mut self) -> Self::Output {
-        Prompt::<W>::submit(&mut self.original)
+        Prompt::submit(&mut self.original)
     }
 
     fn render(
         &mut self,
         state: &promptuity::PromptState,
     ) -> Result<promptuity::RenderPayload, String> {
-        Prompt::<W>::render(&mut self.original, state)
+        Prompt::render(&mut self.original, state)
     }
 }
 

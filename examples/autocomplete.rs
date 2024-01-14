@@ -61,7 +61,7 @@ impl AsMut<Autocomplete> for Autocomplete {
     }
 }
 
-impl<W: std::io::Write> Prompt<W> for Autocomplete {
+impl Prompt for Autocomplete {
     type Output = String;
 
     fn setup(&mut self) -> Result<(), Error> {

@@ -200,7 +200,7 @@ impl AsMut<Number> for Number {
     }
 }
 
-impl<W: std::io::Write> Prompt<W> for Number {
+impl Prompt for Number {
     type Output = isize;
 
     fn setup(&mut self) -> Result<(), crate::Error> {
@@ -311,42 +311,36 @@ mod tests {
 
     test_prompt!(
         test_hint,
-        Number,
         Number::new("test message").with_hint("hint message"),
         vec![]
     );
 
     test_prompt!(
         test_placeholder,
-        Number,
         Number::new("test message").with_placeholder("placeholder message"),
         vec![]
     );
 
     test_prompt!(
         test_default,
-        Number,
         Number::new("test message").with_default(100),
         vec![]
     );
 
     test_prompt!(
         test_required_error,
-        Number,
         Number::new("test message").with_required(true),
         vec![(KeyCode::Enter, KeyModifiers::NONE)]
     );
 
     test_prompt!(
         test_non_required_empty_submit,
-        Number,
         Number::new("test message").with_required(false),
         vec![(KeyCode::Enter, KeyModifiers::NONE)]
     );
 
     test_prompt!(
         test_number_input,
-        Number,
         Number::new("test message").as_mut(),
         vec![
             (KeyCode::Char('1'), KeyModifiers::NONE),
@@ -370,7 +364,6 @@ mod tests {
 
     test_prompt!(
         test_invalid_format,
-        Number,
         Number::new("test message").as_mut(),
         vec![
             (KeyCode::Char('-'), KeyModifiers::NONE),
@@ -380,7 +373,6 @@ mod tests {
 
     test_prompt!(
         test_min_value,
-        Number,
         Number::new("test message").with_min(2),
         vec![
             (KeyCode::Char('1'), KeyModifiers::NONE),
@@ -393,7 +385,6 @@ mod tests {
 
     test_prompt!(
         test_max_value,
-        Number,
         Number::new("test message").with_max(2),
         vec![
             (KeyCode::Char('3'), KeyModifiers::NONE),
@@ -406,7 +397,6 @@ mod tests {
 
     test_prompt!(
         test_increment_decrement,
-        Number,
         Number::new("test message").with_min(2).with_max(4),
         vec![
             (KeyCode::Char('1'), KeyModifiers::NONE),

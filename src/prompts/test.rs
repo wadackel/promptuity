@@ -30,11 +30,7 @@ pub fn render_payload_display(payload: RenderPayload, full: bool) -> String {
     segments.join("\n")
 }
 
-pub fn render_display<T, W>(state: PromptState, prompt: &mut T, full: bool) -> String
-where
-    T: Prompt<W>,
-    W: std::io::Write,
-{
+pub fn render_display(state: PromptState, prompt: &mut impl Prompt, full: bool) -> String {
     format!(
         "state: {}\n{}",
         state,
@@ -42,24 +38,16 @@ where
     )
 }
 
-pub fn handle_actions<T, W>(prompt: &mut T, actions: Vec<(KeyCode, KeyModifiers)>) -> String
-where
-    T: Prompt<W> + Prompt<Vec<u8>>,
-    W: std::io::Write,
-{
+pub fn handle_actions(prompt: &mut impl Prompt, actions: Vec<(KeyCode, KeyModifiers)>) -> String {
     let mut output = Vec::new();
 
-    output.push(render_display::<T, Vec<_>>(
-        PromptState::Active,
-        prompt,
-        true,
-    ));
+    output.push(render_display(PromptState::Active, prompt, true));
 
     for (code, modifiers) in actions {
-        let state = Prompt::<Vec<_>>::handle(prompt, code, modifiers);
+        let state = Prompt::handle(prompt, code, modifiers);
         let state = match state {
             PromptState::Submit => {
-                if let Err(msg) = Prompt::<Vec<_>>::validate(prompt) {
+                if let Err(msg) = Prompt::validate(prompt) {
                     PromptState::Error(msg)
                 } else {
                     PromptState::Submit
@@ -67,7 +55,7 @@ where
             }
             state => state,
         };
-        output.push(render_display::<T, Vec<_>>(state, prompt, false));
+        output.push(render_display(state, prompt, false));
     }
 
     output.join("\n---\n")
@@ -76,10 +64,10 @@ where
 #[allow(clippy::crate_in_macro_def)]
 #[macro_export]
 macro_rules! test_prompt {
-    ($name: ident, $ty: ty, $prompt: expr, $actions: expr) => {
+    ($name: ident, $prompt: expr, $actions: expr) => {
         #[test]
         fn $name() {
-            let output = crate::prompts::test::handle_actions::<$ty, Vec<_>>($prompt, $actions);
+            let output = crate::prompts::test::handle_actions($prompt, $actions);
             insta::with_settings!({ omit_expression => true }, {
                 insta::assert_snapshot!(output);
             });
