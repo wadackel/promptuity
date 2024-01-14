@@ -5,7 +5,7 @@
     ":semanticCommits",
     ":semanticCommitTypeAll(chore)",
     ":semanticCommitScopeDisabled"
-  ]
+  ],
   "labels": ["A-dependencies"],
   "major": {
     "stabilityDays": 7
