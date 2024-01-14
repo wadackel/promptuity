@@ -15,7 +15,7 @@ documentation = "https://docs.rs/promptuity"
 [dependencies]
 crossterm = "0.27.0"
 strip-ansi-escapes = "0.2.0"
-thiserror = "1.0.50"
+thiserror = "1.0.56"
 unicode-width = "0.1.11"
 
 [dev-dependencies]
