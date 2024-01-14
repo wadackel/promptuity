@@ -390,7 +390,7 @@ impl RenderPayload {
 }
 
 /// A trait representing the behavior of a prompt.
-pub trait Prompt<W: std::io::Write> {
+pub trait Prompt {
     /// The type returned as a result by the prompt.
     type Output;
 
@@ -575,7 +575,7 @@ impl<'a, W: std::io::Write> Promptuity<'a, W> {
     }
 
     /// Executes the specified prompt and returns the input result.
-    pub fn prompt<O>(&mut self, prompt: &mut dyn Prompt<W, Output = O>) -> Result<O, Error> {
+    pub fn prompt<O>(&mut self, prompt: &mut dyn Prompt<Output = O>) -> Result<O, Error> {
         prompt.setup()?;
 
         self.state = PromptState::Active;
@@ -616,7 +616,7 @@ impl<'a, W: std::io::Write> Promptuity<'a, W> {
         }
     }
 
-    fn render<O>(&mut self, prompt: &mut dyn Prompt<W, Output = O>) -> Result<(), Error> {
+    fn render<O>(&mut self, prompt: &mut dyn Prompt<Output = O>) -> Result<(), Error> {
         let res = prompt.render(&self.state).map_err(Error::Prompt)?;
 
         self.theme.render(

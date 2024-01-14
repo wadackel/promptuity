@@ -130,7 +130,7 @@ impl AsMut<Confirm> for Confirm {
     }
 }
 
-impl<W: std::io::Write> Prompt<W> for Confirm {
+impl Prompt for Confirm {
     type Output = bool;
 
     fn handle(&mut self, code: KeyCode, modifiers: KeyModifiers) -> PromptState {
@@ -190,28 +190,24 @@ mod tests {
 
     test_prompt!(
         test_hint,
-        Confirm,
         Confirm::new("test message").with_hint("hint message"),
         vec![]
     );
 
     test_prompt!(
         test_default_enter,
-        Confirm,
         Confirm::new("test message").as_mut(),
         vec![(KeyCode::Enter, KeyModifiers::NONE)]
     );
 
     test_prompt!(
         test_default_yes,
-        Confirm,
         Confirm::new("test message").with_default(true),
         vec![(KeyCode::Enter, KeyModifiers::NONE)]
     );
 
     test_prompt!(
         test_move,
-        Confirm,
         Confirm::new("test message").as_mut(),
         vec![
             (KeyCode::Left, KeyModifiers::NONE),
@@ -228,28 +224,24 @@ mod tests {
 
     test_prompt!(
         test_direct_lower_yes,
-        Confirm,
         Confirm::new("test message").with_default(false),
         vec![(KeyCode::Char('y'), KeyModifiers::NONE)]
     );
 
     test_prompt!(
         test_direct_upper_yes,
-        Confirm,
         Confirm::new("test message").with_default(false),
         vec![(KeyCode::Char('Y'), KeyModifiers::NONE)]
     );
 
     test_prompt!(
         test_direct_lower_no,
-        Confirm,
         Confirm::new("test message").with_default(true),
         vec![(KeyCode::Char('n'), KeyModifiers::NONE)]
     );
 
     test_prompt!(
         test_direct_upper_no,
-        Confirm,
         Confirm::new("test message").with_default(true),
         vec![(KeyCode::Char('N'), KeyModifiers::NONE)]
     );

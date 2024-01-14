@@ -119,7 +119,7 @@ impl AsMut<Password> for Password {
     }
 }
 
-impl<W: std::io::Write> Prompt<W> for Password {
+impl Prompt for Password {
     type Output = String;
 
     fn handle(
@@ -210,28 +210,24 @@ mod tests {
 
     test_prompt!(
         test_hint,
-        Password,
         Password::new("test message").with_hint("hint message"),
         vec![]
     );
 
     test_prompt!(
         test_required_error,
-        Password,
         Password::new("test message").with_required(true),
         vec![(KeyCode::Enter, KeyModifiers::NONE)]
     );
 
     test_prompt!(
         test_non_required_empty_submit,
-        Password,
         Password::new("test message").with_required(false),
         vec![(KeyCode::Enter, KeyModifiers::NONE)]
     );
 
     test_prompt!(
         test_input,
-        Password,
         Password::new("test message").as_mut(),
         vec![
             (KeyCode::Char('a'), KeyModifiers::NONE),
@@ -244,7 +240,6 @@ mod tests {
 
     test_prompt!(
         test_editing,
-        Password,
         Password::new("test message").as_mut(),
         vec![
             (KeyCode::Char('a'), KeyModifiers::NONE),
@@ -280,7 +275,6 @@ mod tests {
 
     test_prompt!(
         test_custom_mask,
-        Password,
         Password::new("test message").with_mask('∙'),
         vec![
             (KeyCode::Char('a'), KeyModifiers::NONE),

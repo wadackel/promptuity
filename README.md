@@ -293,7 +293,7 @@ struct CustomConfirm {
     value: bool,
 }
 
-impl<W: std::io::Write> Prompt<W> for CustomConfirm {
+impl Prompt for CustomConfirm {
     type Output = bool;
 
     // TODO
@@ -316,7 +316,7 @@ use promptuity::{Prompt, PromptState};
 
 // ...
 
-impl<W: std::io::Write> Prompt<W> for CustomConfirm {
+impl Prompt for CustomConfirm {
     // ...
 
     fn handle(&mut self, code: KeyCode, modifiers: KeyModifiers) -> PromptState {
@@ -353,7 +353,7 @@ use promptuity::{Prompt, PromptState, RenderPayload};
 
 // ...
 
-impl<W: std::io::Write> Prompt<W> for CustomConfirm {
+impl Prompt for CustomConfirm {
     // ...
 
     fn render(&mut self, state: &PromptState) -> Result<RenderPayload, String> {
@@ -386,7 +386,7 @@ This is the final step in constructing a custom prompt.
 Implement the [`Prompt::submit`](https://docs.rs/promptuity/latest/promptuity/trait.Prompt.html#tymethod.submit) method, which returns the final value for the received key input.
 
 ```rust
-impl<W: std::io::Write> Prompt<W> for CustomConfirm {
+impl Prompt for CustomConfirm {
     // ...
 
     fn submit(&mut self) -> Self::Output {

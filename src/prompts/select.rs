@@ -176,7 +176,7 @@ impl<T: Default + Clone> AsMut<Select<T>> for Select<T> {
     }
 }
 
-impl<T: Default + Clone, W: std::io::Write> Prompt<W> for Select<T> {
+impl<T: Default + Clone> Prompt for Select<T> {
     type Output = T;
 
     fn setup(&mut self) -> Result<(), Error> {
@@ -269,34 +269,30 @@ mod tests {
 
     test_prompt!(
         test_hint,
-        Select<String>,
         Select::new("test message", options!(3)).with_hint("hint message"),
         vec![]
     );
 
     test_prompt!(
         test_10_items,
-        Select<String>,
         Select::new("test message", options!(10)).as_mut(),
         vec![]
     );
 
     test_prompt!(
         test_10_items_with_5_page_size,
-        Select<String>,
         Select::new("test message", options!(10)).with_page_size(5),
         vec![]
     );
 
     test_prompt!(
         test_option_hint,
-        Select<String>,
         Select::new(
             "test message",
             vec![
-                SelectOption::new("Value1", "value1".into()).with_hint("hint1"),
-                SelectOption::new("Value2", "value2".into()),
-                SelectOption::new("Value3", "value3".into()).with_hint("hint3"),
+                SelectOption::new("Value1", "value1".to_string()).with_hint("hint1"),
+                SelectOption::new("Value2", "value2".to_string()),
+                SelectOption::new("Value3", "value3".to_string()).with_hint("hint3"),
             ]
         )
         .with_page_size(5),
@@ -305,7 +301,6 @@ mod tests {
 
     test_prompt!(
         test_move,
-        Select<String>,
         Select::new("test message", options!(10)).with_page_size(5),
         vec![
             (KeyCode::Char('j'), KeyModifiers::NONE),
@@ -337,7 +332,6 @@ mod tests {
 
     test_prompt!(
         test_select_5,
-        Select<String>,
         Select::new("test message", options!(10)).as_mut(),
         vec![
             (KeyCode::Char('j'), KeyModifiers::NONE),
