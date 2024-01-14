@@ -1,3 +1,5 @@
+use strip_ansi_escapes::strip_str;
+
 use crate::style::*;
 use crate::{
     Error, InputCursor, PromptBody, PromptInput, PromptState, RenderSnapshot, Terminal, Theme,
@@ -244,7 +246,9 @@ impl<W: std::io::Write> Theme<W> for FancyTheme {
                 output.push_str(&self.fmt_body_active(Color::Cyan, payload.body));
                 output.push_str(&self.fmt_end(Color::Cyan, true));
 
-                self.prev_lines = output.lines().count() as u16;
+                self.prev_lines = wrap_text(&strip_str(&output), term.size()?.width)
+                    .lines()
+                    .count() as u16;
             }
 
             PromptState::Error(msg) | PromptState::Fatal(msg) => {
@@ -278,7 +282,9 @@ impl<W: std::io::Write> Theme<W> for FancyTheme {
                     self.fmt_error(msg.clone()),
                 ));
 
-                self.prev_lines = output.lines().count() as u16;
+                self.prev_lines = wrap_text(&strip_str(&output), term.size()?.width)
+                    .lines()
+                    .count() as u16;
             }
 
             PromptState::Submit => {

@@ -32,6 +32,7 @@
 /// [`Color`] re-exports from [`crossterm::style::Color`].
 pub use crossterm::style::Color;
 use crossterm::style::{Attribute, Attributes, ContentStyle, Stylize};
+use unicode_width::UnicodeWidthChar;
 
 /// A styling utility for strings wrapped in [`crossterm::style::ContentStyle`].
 #[derive(Debug)]
@@ -165,4 +166,37 @@ impl<'a, 'b> std::fmt::Display for Symbol<'a, 'b> {
             write!(f, "{}", self.1)
         }
     }
+}
+
+/// A utility function to wrap text at a specified character count.
+///
+/// # Examples
+///
+/// ```
+/// use promptuity::style::wrap_text;
+///
+/// let text = "This is a long text that will be wrapped at 10 characters.";
+///
+/// assert_eq!(wrap_text(text, 10), "This is a \nlong text \nthat will \nbe wrapped\n at 10 cha\nracters.");
+/// ```
+pub fn wrap_text(input: &str, col: u16) -> String {
+    let mut output = String::new();
+    let mut cw = 0;
+
+    for (_, c) in input.char_indices() {
+        let w = c.width().unwrap_or(0);
+        if c == '\n' {
+            cw = 0;
+            output.push(c);
+            continue;
+        }
+        if cw + w > col as usize {
+            output.push('\n');
+            cw = 0;
+        }
+        output.push(c);
+        cw += w;
+    }
+
+    output
 }
