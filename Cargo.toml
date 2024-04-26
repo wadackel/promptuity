@@ -16,7 +16,7 @@ documentation = "https://docs.rs/promptuity"
 crossterm = "0.27.0"
 strip-ansi-escapes = "0.2.0"
 thiserror = "1.0.58"
-unicode-width = "0.1.11"
+unicode-width = "0.1.12"
 
 [dev-dependencies]
 fuzzy-matcher = "0.3.7"
