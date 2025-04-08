@@ -13,7 +13,7 @@ homepage = "https://github.com/wadackel/promptuity"
 documentation = "https://docs.rs/promptuity"
 
 [dependencies]
-crossterm = "0.27.0"
+crossterm = "0.29.0"
 strip-ansi-escapes = "0.2.0"
 thiserror = "1.0.58"
 unicode-width = "0.1.11"
