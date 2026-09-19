@@ -31,7 +31,7 @@ jobs:
           rustup update stable
           rustup default stable
 
-      - uses: MarcoIeni/release-plz-action@8724d33cd97b8295051102e2e19ca592962238f5 # v0.5.108
+      - uses: MarcoIeni/release-plz-action@d6c56271d640b6c1b61d1e00593641c400a9f4bd # v0.5.138
         env:
           GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
           CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
