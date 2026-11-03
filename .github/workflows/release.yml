@@ -15,13 +15,13 @@ jobs:
     name: Release
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/create-github-app-token@v1
+      - uses: actions/create-github-app-token@v1.12.0
         id: app-token
         with:
           app-id: ${{ secrets.GH_RELEASER_APP_ID }}
           private-key: ${{ secrets.GH_RELEASER_APP_PRIVATE_KEY }}
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4.4.0
         with:
           fetch-depth: 0
           token: ${{ steps.app-token.outputs.token }}
@@ -31,7 +31,7 @@ jobs:
           rustup update stable
           rustup default stable
 
-      - uses: MarcoIeni/release-plz-action@8724d33cd97b8295051102e2e19ca592962238f5 # v0.5.108
+      - uses: release-plz/action@v0.5.108
         env:
           GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
           CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
